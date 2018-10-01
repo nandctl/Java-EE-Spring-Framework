@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 
+
+	<bean class="_01.mvc.controller.HelloController">
+		<property name="helloService" ref="helloServiceId"/>
+	</bean>
+
+	<bean class="_01.mvc.service.HelloServiceImpl" id="helloServiceId" />
+
+ 	-->
+
+	<!-- We can use auto-scanning via context:component-scan tag. 
+		However we don't have to define bean with XML configuration
+	-->
+
+	<!--Auto-scanning ozelligini aktif ettigimizde bean tanimlamasini xml dosyamizda 
+		yapmamiza gerek kalmaz. @Controller ve @Service annotation i yeterli olacaktir. -->
+		
+	<context:component-scan base-package="_01.mvc.controller , 
+										  _01.mvc.service" />
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
